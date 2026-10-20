@@ -1,0 +1,14 @@
+cff-version: 1.2.0
+message: "If you use this code or data, please cite the article and this archive."
+title: "Conserved core drought transcriptome in watermelon: code and processed data"
+authors:
+  - family-names: Isak
+    given-names: Musab Abdukadir
+    affiliation: "Erciyes University, Kayseri, Türkiye"
+  - family-names: Şimşek
+    given-names: Özhan
+    affiliation: "Erciyes University, Kayseri, Türkiye"
+version: "1.0.0"
+date-released: "2026-10-19"
+license: MIT
+repository-code: "https://github.com/MusabIsak/watermelon-drought-meta"

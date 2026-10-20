@@ -1,0 +1,44 @@
+--- a/dynamicTreeCut.py
++++ b/dynamicTreeCut.py
+@@ -332,7 +332,7 @@
+                 clusts = IndMergeToBranch[dendro_merge[merge,] - 1]
+                 sizes = branch_size[clusts - 1]
+                 # Note: for 2 elements, rank and order are the same.
+-                rnk = rankdata(sizes, method = "ordinal")
++                rnk = rankdata(sizes, method = "ordinal").astype(int)
+                 small = clusts[rnk[0] - 1]
+                 large = clusts[rnk[1] - 1]
+                 sizes = sizes[rnk - 1]
+@@ -709,7 +709,7 @@
+                             if onBr > 0:
+                                 basicOnBranch = branch_basicClusters[onBr[0] - 1]
+                                 labelsOnBranch = branchLabels[basicOnBranch - 1]
+-                                useObjects = np.in1d(ColorsX, np.unique(labelsOnBranch))
++                                useObjects = np.isin(ColorsX, np.unique(labelsOnBranch))
+                                 DistSClustClust = get_rows(InCluster, distM)[:,useObjects]
+                                 #DistSClustClust = distM[InCluster, useObjects]
+                                 MeanDist = np.mean(DistSClustClust, axis=0)
+@@ -753,7 +753,7 @@
+                         onBr = onBranch[obj]
+                         basicOnBranch = branch_basicClusters[onBr - 1]
+                         labelsOnBranch = branchLabels[basicOnBranch - 1]
+-                        useObjects = np.in1d(ColorsX, np.unique(labelsOnBranch))
++                        useObjects = np.isin(ColorsX, np.unique(labelsOnBranch))
+                         useColorsFac = factor(ColorsX[useObjects]) ### think about
+                         #UnassdToClustDist = tapply(distM[useObjects, obj], useColorsFac, mean) ### think about
+                         UnassdToClustDist = tapply(get_rows(useObjects, distM)[:,obj], useColorsFac, np.mean) ### think about
+@@ -789,12 +789,12 @@
+     Sizes = table(NumLabs) ### think about
+     if UnlabeledExist:
+         if len(Sizes) > 1:
+-            SizeRank = np.append(1, rankdata(-Sizes.iloc[1:len(Sizes)], method="ordinal")+1)
++            SizeRank = np.append(1, rankdata(-Sizes.iloc[1:len(Sizes)], method="ordinal").astype(int)+1)
+         else:
+             SizeRank = np.array([1])
+         OrdNumLabs = SizeRank[NumLabs - 1]
+     else:
+-        SizeRank = rankdata(-Sizes.iloc[np.arange(len(Sizes))], method="ordinal")
++        SizeRank = rankdata(-Sizes.iloc[np.arange(len(Sizes))], method="ordinal").astype(int)
+         OrdNumLabs = SizeRank[NumLabs - 2]
+     ordCoreLabels = OrdNumLabs - UnlabeledExist
+     ordCoreLabels[coreLabels == 0] = 0

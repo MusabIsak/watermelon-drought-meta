@@ -1,0 +1,12 @@
+# Python 3.13.16
+pandas==3.0.5
+numpy==2.5.3
+scipy==1.18.1
+scikit-learn==1.9.1
+xgboost==3.4.1
+pydeseq2==0.5.4
+mappy==2.31
+matplotlib==3.11.2
+openpyxl==3.1.5
+dynamicTreeCut==0.1.1   # apply scripts/patch_dynamicTreeCut.sh after installing (numpy 2 compatibility)
+# External tools: Salmon 1.10.0, DIAMOND 2.1.10, curl, gzip, mawk
